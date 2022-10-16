@@ -1,3 +1,7 @@
 {
-    "api_endpoint": "http://localhost:5000"
+    "api_endpoint": "http://localhost:5000",
+    "cricketData": {
+        "apikey": "22481056-fdf1-4774-9578-c0a31ee0e3d8",
+        "offset": 0
+    }
 }

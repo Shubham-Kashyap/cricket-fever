@@ -43,7 +43,22 @@ const get_api_call = async (paramEndPoint, requestData = {}) => {
     }
 }
 
+const get_cricket_data = async () => {
+    try {
+        let result = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${config?.cricketData?.apikey}&offset=${config?.cricketData?.offset}`, {
+            method: 'GET',
+            headers: {
+                Accept: "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
+            },
 
+        });
+        let response = await result.json();
+        return response;
+    } catch (error) {
+        return error;
+    }
+}
 
 export {
 
