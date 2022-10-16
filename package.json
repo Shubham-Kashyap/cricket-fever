@@ -1,0 +1,16 @@
+{
+  "name": "cricket-fever",
+  "version": "1.0.0",
+  "description": "this is cricket fever",
+  "main": "backend/server.js",
+  "scripts": {
+    "backend": "nodemon backend/server",
+    "frontend": "npm start --prefix frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shubham kashyap",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

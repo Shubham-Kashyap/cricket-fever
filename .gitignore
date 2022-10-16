@@ -1,0 +1,13 @@
+# hide file from backend code
+
+/backend/node_modules
+/backend/config/default.json
+
+
+#hide files from front end code
+/frontend/node_modules
+
+
+#hide files from root directory
+node_modules
+.env
