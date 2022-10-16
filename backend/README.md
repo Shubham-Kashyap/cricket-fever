@@ -1,16 +1,13 @@
-# MERN
-This is mern application version 1
-
-Hi, my name is **shubham kashyap** , I have created this project to setup and create the backend of MERN application in Node js along with reusable files and folder structure.But later on i thought it would be great if it works with react js so added react js. 
+# cricket-fever
+This is backend code for cricket fever application . this application is built for cricket lovers to see the list of ongoing matches and see the details about ongoing match
 
 # prerequisites
 
-Basic knowledge of **Node**, **React**, **Express**, **MongoDB**
+Basic knowledge of **Node**, **Express**, **sequelize**
 
 # install dependencies
 
-**To run client** run `cd client` and then `npm intsall`  
-**To run server** run `npm intsall`  in the parent directory
+**To run backend** run `npm intsall`  in the ``backend/`` directory
 
 ## Environment variables
 
@@ -25,10 +22,6 @@ you can use any library from npm namely  **dotenv** and **config** to store and 
 - **DB_NAME**=
 - **PORT**
 - **DB_TYPE**=
-- **S3_KEY**=
-- **S3_SECRET**=
-- **S3_BUCKET_NAME**=
-- **S3_REGION**= 
 - **AUTH_TOKEN**=
 
 _fill each field with your info respectively and you can declare and use additional variables and info as well as per your requirements_
