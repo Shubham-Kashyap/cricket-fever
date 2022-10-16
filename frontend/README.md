@@ -1,7 +1,9 @@
-# Getting Started with Create React App
+# cricket-fever
+This is frontend code for cricket fever application . this application is built for cricket lovers to see the list of ongoing matches and see the details about ongoing match
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# prerequisites
 
+Basic knowledge of **React JS**, **React Redux**
 ## Available Scripts
 
 In the project directory, you can run:
