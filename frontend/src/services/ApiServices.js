@@ -3,7 +3,7 @@ let api_end_point = config.api_endpoint;
 
 
 
-const post_api_call = async (paramEndPoint, requestData) => {
+const post_api_call = async (paramEndPoint, requestData = {}) => {
     try {
 
         // console.log(requestData)
@@ -25,7 +25,7 @@ const post_api_call = async (paramEndPoint, requestData) => {
     }
 }
 
-const get_api_call = async (paramEndPoint, requestData) => {
+const get_api_call = async (paramEndPoint, requestData = {}) => {
     try {
         let result = await fetch(`${api_end_point}${paramEndPoint}`, {
             method: 'GET',

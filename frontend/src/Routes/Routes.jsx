@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Outlet, Routes as RouterRoutes } from "react-router-dom";
+import { BrowserRouter, Route, Routes as RouterRoutes } from "react-router-dom";
+import ProtectRoutes from "./ProtectRoutes";
+import Home from "../pages/other/Home";
 
 const Routes = () => {
     /**
@@ -30,9 +32,17 @@ const Routes = () => {
     }, []);
 
     return (
-        <div>
+        <>
+            <BrowserRouter>
+                <RouterRoutes>
+                    <Route element={<ProtectRoutes />}>
+                        <Route path="/dashboard" element={<Home />} />
 
-        </div>
+                    </Route>
+
+                </RouterRoutes>
+            </BrowserRouter>
+        </>
     )
 }
 

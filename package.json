@@ -2,15 +2,19 @@
   "name": "cricket-fever",
   "version": "1.0.0",
   "description": "this is cricket fever",
-  "main": "backend/server.js",
+  "main": "nodemon backend/server.js",
   "scripts": {
     "backend": "nodemon backend/server",
     "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd frontend && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "shubham kashyap",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^7.4.0",
+    "config": "^3.3.8",
     "dotenv": "^16.0.3"
   }
 }
