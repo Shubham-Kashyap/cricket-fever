@@ -15,4 +15,7 @@ class Response {
     }
 }
 
-module.exports = new Response();
+const res = new Response();
+module.exports = res;
+module.returnErrorResponse = res.returnErrorResponse;
+module.returnSuccessResponse = res.returnSuccessResponse;

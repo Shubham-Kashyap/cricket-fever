@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { post_api_call } from "../services/ApiServices";
+import Navbar from "../pages/common/Navbar";
+import Sidebar from "../pages/common/Sidebar";
 import { useDispatch } from "react-redux";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
+import { post_api_call } from '../services/ApiServices';
 
 
 const _login = (authToken) => {
@@ -25,24 +25,21 @@ const _pass = () => {
 
 const ProtectRoutes = () => {
     const dispatch = useDispatch();
-    const authToken = localStorage.getItem('authToken') ? localStorage.getItem('authToken') : null;
     async function getLoggedInUserData() {
-        const result = await post_api_call('/api/v1/fetch-profile', {});
-        console.log('logged in user --', result)
+        const res = await post_api_call('/api/v1/fetch-profile');
+        console.log('sjdasjkdas dskadna --s', res)
         dispatch({
             type: "setLoggedInUserData",
-            payload: result?.response
+            payload: res?.response
         });
     }
-    React.useEffect(() => {
+    useEffect(() => {
         getLoggedInUserData();
-    }, [])
 
-    return (
-        <>
-            {authToken !== null ? _pass(authToken) : _login()}
-        </>
-    )
+    }, [])
+    const auth = localStorage.getItem('authtoken') ? localStorage.getItem('authtoken') : null; // determine if authorized, from context or however you're doing it
+    // If authorized, return an outlet that will render child elements
+    return auth ? _pass(auth) : _login();
 }
 
-export default ProtectRoutes
+export default ProtectRoutes;

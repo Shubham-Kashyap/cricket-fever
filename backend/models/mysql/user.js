@@ -59,9 +59,7 @@ const User = sequelize.define('User', {
     tableName: "users",
     timestamps: false
 }).sync({
-    // alter: true,
-    // force: true,
-
+    alter: true,
 });
 
 // sequelize.sync().then(() => {

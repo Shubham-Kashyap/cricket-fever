@@ -39,9 +39,8 @@ const Routes = () => {
                 <RouterRoutes>
 
                     <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-
-
+                    <Route path="/register" element={<Signup />} />
+                    <Route path="/" element={<Login />} />
 
                     {/* protected routes start  */}
                     <Route element={<ProtectRoutes />}>

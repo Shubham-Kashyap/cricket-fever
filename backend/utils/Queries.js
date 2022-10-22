@@ -1,16 +1,17 @@
-class Queries {
-    UpdateQuery = async () => {
+const { returnErrorResponse } = require('../utils/Response');
 
-    }
-    FindOneQuery = async () => {
-
-    }
-    findAllQuery = async () => {
-
-    }
-    InsertQuery = async () => {
-
-    }
+const query = (queryName) => {
+    queryName.then((returnData) => {
+        return {
+            status: true,
+            data: returnData
+        };
+    }).catch((error) => {
+        return {
+            status: false,
+            data: error.message
+        }
+    });
 }
 
-module.exports = new Queries();
+module.exports = query;

@@ -1,6 +1,6 @@
-const { chalk, express, apiRoutes } = require('../exports/library')
+const { chalk, express, apiRoutes, db } = require('../exports/library')
 
-class boot_app {
+class BootApp {
 
     constructor(port, app) {
         this.port = port;
@@ -30,7 +30,9 @@ class boot_app {
         }));
         this.app.use('/api/v1', apiRoutes);
     }
+    _connectWithDatabase = () => {
 
+    }
     _displayIncommingRequest = () => {
         this.app.use((req, res, next) => {
             // For example, a GET request to `/test` will print "GET /test"
@@ -42,4 +44,4 @@ class boot_app {
     }
 }
 
-module.exports = boot_app
+module.exports = BootApp;

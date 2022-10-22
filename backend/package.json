@@ -4,7 +4,7 @@
   "description": "learn mern stack development",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "nodemon server",
     "server": "nodemon server",
     "dev": "npx nodemon",
     "app": "do nothing for now",
@@ -24,7 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "node-fetch": "^3.2.6",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.20",
     "request": "^2.88.2",
     "sequelize": "^6.17.0",
     "validatorjs": "^3.22.1"

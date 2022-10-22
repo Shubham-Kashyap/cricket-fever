@@ -16,6 +16,7 @@ module.exports = {
 
 
     apiRoutes: require('../routes/api_routes'),
+    db : require('../config/db'),
 
 
     models: function () {
