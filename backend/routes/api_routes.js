@@ -1,13 +1,12 @@
 const express = require('express');
 const api = express.Router();
 const auth = require('../middlewares/Auth');
-const validate = require('../utils/Validate');
-const { check, validationResult } = require('express-validator')
-// @ import controllers 
+const validate = require('../utils/ValidateWithValidatorJS');
+
+
 const UserController = require('../controllers/api/UserController');
-const {
-    validateRequest,
-} = require('../utils/Validate');
+// const { validateRequest } = require('../utils/ValidateWithValidatorJS');
+const { validateRequest } = require('../utils/Validate')
 
 
 // UserController routes 
@@ -30,24 +29,5 @@ api.all('*', (req, res, next) => {
 });
 
 
-
-
-
-const returnValidationRules = () => {
-    return [
-        check('name').not().isEmpty()
-    ];
-}
-const returnValidationResults = (req, res, next) => {
-    const errors = validationResult(req);
-    // console.log(errors)
-    if (!errors.isEmpty()) {
-        res.json({
-            status: false,
-            errors: errors
-        })
-    }
-    next();
-}
 
 module.exports = api;

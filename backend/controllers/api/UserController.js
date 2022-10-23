@@ -1,32 +1,27 @@
 /**
  * @Library imports
  */
-// const User = require("../../model/user");
-// const User = require('../../models/user')
 const { returnSuccessResponse, returnErrorResponse } = require("../../utils/Response");
 const { chalk, validator } = require('../../exports/library');
-const { generateToken } = require('../../services/auth');
-const { sequelize, Sequelize } = require('../../config/db');
-// const Validator = require('validatorjs');
-
+const { models } = require("../../config/db");
+const { generateHash, compareHash } = require('../../services/crypto');
 
 class UserController {
 
     /** @signup_api */
     async userSignup(req, res) {
         try {
-            await validator.validateRequest(req, {
-                name: 'required',
-                email: "required|email",
-                phone_no: "required|numeric"
-            }, {
-                'required.email': 'The :attribute field is required now back off'
+            const _request = req.body;
+            console.log(models.user)
+            const data = await User.create({
+                firstName: _request.fullname,
+                dob: _request.dob,
+                phone_no: _request.phone_no,
+                password: await generateHash(_request.password)
             });
-            // await validator.requiredValidation(req.body, [email, name])
-            const aleradyExist =
-                returnSuccessResponse(res, 'hello this is signup api');
+            return returnSuccessResponse(res, 'signup successfull', data);
         } catch (error) {
-            returnErrorResponse(res, error.message)
+            return returnErrorResponse(res, error.message)
         }
 
     }

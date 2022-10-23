@@ -1,9 +1,6 @@
-// const { env } = require('../exports/library');
-const { env } = require('../exports/library')
-
 const { Sequelize, Model, DataTypes } = require("sequelize");
-
-const { chalk } = require('../exports/library');
+const env = require('dotenv').config();
+const chalk = require('chalk');
 
 let sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -15,19 +12,27 @@ let sequelize = new Sequelize(
     }
 );
 
-sequelize
-    .authenticate()
-    .then(() => {
-        sequelize.sync();
-        console.log(chalk.yellow.inverse.bold("Success databse connected!"));
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+const models = {
+    user: require('../models/mysql/user')(sequelize)
+}
+const connectWithDatabase = () => {
+    sequelize.sync()
+    sequelize
+        .authenticate()
+        .then(() => {
+            // sequelize.sync();
+            console.log(chalk.yellow.bold("Success databse connected!"));
+        })
+        .catch((error) => {
+            console.log(err.message)
+            throw new Error('DB CONNECTION ERROR - ', error.message)
+            process.exit([0]);
+        });
 
-sequelize.sync();
+}
 
-module.exports = { sequelize, Sequelize, Model, DataTypes };
+
+module.exports = { sequelize, Sequelize, Model, DataTypes, connectWithDatabase, models };
 
 
 

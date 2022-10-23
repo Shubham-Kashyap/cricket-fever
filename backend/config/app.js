@@ -1,4 +1,4 @@
-const { chalk, express, apiRoutes, db } = require('../exports/library')
+const { chalk, express, apiRoutes, db } = require('../exports/library');
 
 class BootApp {
 
@@ -9,21 +9,20 @@ class BootApp {
 
     start = () => {
         this._listen();
+        this._connectWithDatabase();
         this._setupRoutes();
         this._setupRoutes();
         this._displayIncommingRequest();
     }
 
     _listen = () => {
-        // console.log("port", this.port);
         this.app.listen(this.port, () => {
-            console.log(chalk.yellow.inverse.bold('Success ! Server is running on port :'), chalk.cyan.bold(this.port))
+            console.log(chalk.yellow.bold('Success ! Server is running on port :'), chalk.cyan.bold(this.port))
         });
     }
 
     _setupRoutes = () => {
 
-        // this.app.use(express)
         this.app.use(express.json());
         this.app.use(express.urlencoded({
             extended: true
@@ -31,7 +30,7 @@ class BootApp {
         this.app.use('/api/v1', apiRoutes);
     }
     _connectWithDatabase = () => {
-
+        db.connectWithDatabase();
     }
     _displayIncommingRequest = () => {
         this.app.use((req, res, next) => {
